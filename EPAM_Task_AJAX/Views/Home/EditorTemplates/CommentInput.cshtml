@@ -1,0 +1,10 @@
+﻿@using EPAM_Task_AJAX.Models.ViewModels;
+@model CommentsViewModel.CommentInput
+<p>
+    @Html.LabelFor(m => m.User):
+    @Html.TextBoxFor(m => m.User)
+</p>
+<p>
+    @Html.LabelFor(m => m.Text):
+    @Html.TextAreaFor(m => m.Text, new { rows = 5, cols = 30 })
+</p>

@@ -1,0 +1,9 @@
+﻿@using EPAM_Task_AJAX.Models.ViewModels;
+@model IEnumerable<CommentViewModel>
+
+<ol id="comments">
+    @foreach (var comment in Model)
+    {
+        <li>@Html.DisplayFor(m => comment)</li>
+    }
+</ol>

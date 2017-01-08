@@ -1,0 +1,13 @@
+﻿@using EPAM_Task_AJAX.Models.ViewModels;
+@model CommentViewModel
+<p>
+    @Html.LabelFor(m => m.User):
+    <span style="font-weight:700">@Html.DisplayFor(m => m.User)</span>
+
+    @Html.LabelFor(m => m.Data):
+    <span style="font-weight:600">@Html.DisplayFor(m => m.Data)</span>
+</p>
+<p>
+    @Html.LabelFor(m => m.Text):
+    @Html.DisplayFor(m => m.Text)
+</p>

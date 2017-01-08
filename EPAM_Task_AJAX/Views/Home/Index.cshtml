@@ -1,0 +1,69 @@
+﻿@using EPAM_Task_AJAX.Models.ViewModels;
+@model CommentsViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@section scripts {
+    <script type="text/javascript"
+            src="@Url.Content("~/Content/Ajax.js")">
+    </script>
+
+    <script type="text/javascript"
+            src="@Url.Content("~/scripts/jquery.unobtrusive-ajax.js")">
+    </script>
+
+    <script type="text/javascript"
+            src="http://ajax.microsoft.com/ajax/jQuery.templates/beta1/jQuery.tmpl.js">
+    </script>
+    <script type="text/javascript"
+            src="~/Content/JSON.js">
+    </script>
+    <script id="commentTemplate" type="text/x-jquery-tmpl">
+        <li>
+            <p>
+                @Html.Label("User", "User"):
+                <span style="font-weight:700">${User}</span>
+
+                @Html.Label("Data", "Data"):
+                <span style="font-weight:600">${Data}</span>
+            </p>
+            <p>
+                @Html.Label("Text", "Text"):
+                ${Text}
+            </p>
+        </li>
+    </script>
+}
+
+<h2>Comments</h2>
+
+@Html.DisplayFor(m => m.Comments)
+
+@using (Html.BeginForm("AddComment", "Home", FormMethod.Post, new { id = "commentForm" }))
+{
+    @Html.ValidationSummary(true, "Please correct the errors and try again.")
+
+    @Html.EditorFor(m => m.NewComment)
+    <br />
+    <input type="submit" value="Add Comment jQuery" />
+}
+
+@using (Ajax.BeginForm("AddComment", "Home", new AjaxOptions { UpdateTargetId = "comments", InsertionMode = InsertionMode.InsertAfter }))
+{
+    @Html.ValidationSummary(true, "Please correct the errors and try again.")
+
+    @Html.EditorFor(m => m.NewComment)
+    <br />
+    <input type="submit" value="Add Comment RAZOR" />
+}
+
+@using (Html.BeginForm("AddComment_JSON", "Home", FormMethod.Post, new { id = "commentForm_JSON" }))
+{
+    @Html.ValidationSummary(true, "Please correct the errors and try again.")
+
+    @Html.EditorFor(m => m.NewComment)
+    <br />
+    <input type="submit" value="Add Comment JSON" />
+}
